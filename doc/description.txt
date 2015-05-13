@@ -1,0 +1,5 @@
+B64
+---
+
+it is a small tool made in wpf that encodes texts in base64.
+currently only works with texts. i have plans to add functionality to encode/decode binary files too.
