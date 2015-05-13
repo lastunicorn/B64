@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace DustInTheWind.B64
 {
@@ -9,6 +10,7 @@ namespace DustInTheWind.B64
         private bool updateMode;
         private string decodedText;
         private string encodedText;
+        private string title;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -18,6 +20,16 @@ namespace DustInTheWind.B64
 
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public string Title
+        {
+            get { return title; }
+            set
+            {
+                title = value;
+                OnPropertyChanged("Title");
+            }
         }
 
         public string DecodedText
@@ -68,6 +80,15 @@ namespace DustInTheWind.B64
         public MainViewModel()
         {
             base64Encoder = new Base64Encoder();
+
+            Title = GetWindowTitle();
+        }
+
+        private static string GetWindowTitle()
+        {
+            Assembly assembly = Assembly.GetEntryAssembly();
+            Version version = assembly.GetName().Version;
+            return string.Format("Base64 Encoder {0}", version.ToString(2));
         }
 
         public void Update(Action action)
