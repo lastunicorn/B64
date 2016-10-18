@@ -67,6 +67,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Base64Encoder.cs" />
+    <Compile Include="Presentation\Commands\LoadDecodedFileCommand.cs" />
+    <Compile Include="Presentation\Commands\SaveDecodedFileCommand.cs" />
+    <Compile Include="Presentation\Commands\LoadEncodedFileCommand.cs" />
+    <Compile Include="Presentation\Commands\SaveEncodedFileCommand.cs" />
     <Compile Include="Presentation\MainViewModel.cs" />
     <Compile Include="Presentation\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

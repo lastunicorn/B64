@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Windows;
-using System.Windows.Controls;
 using DustInTheWind.B64.Business;
 
 namespace DustInTheWind.B64.Presentation
@@ -33,42 +32,6 @@ namespace DustInTheWind.B64.Presentation
 
             viewModel = new MainViewModel();
             DataContext = viewModel;
-        }
-
-        private void TextBoxDecoded_OnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            viewModel.DecodedText = TextBoxDecoded.Text;
-        }
-
-        private void TextBoxEncoded_OnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            viewModel.EncodedText = TextBoxEncoded.Text;
-        }
-
-        private void ButtonSaveDecoded_OnClick(object sender, RoutedEventArgs e)
-        {
-            SaveLoadFile.SaveTextFile("Decoded", TextBoxDecoded.Text);
-        }
-
-        private void ButtonSaveEncoded_OnClick(object sender, RoutedEventArgs e)
-        {
-            SaveLoadFile.SaveTextFile("Encoded", TextBoxEncoded.Text);
-        }
-
-        private void ButtonLoadDecoded_OnClick(object sender, RoutedEventArgs e)
-        {
-            string text = SaveLoadFile.LoadTextFile();
-
-            if (text != null)
-                viewModel.DecodedText = text;
-        }
-
-        private void ButtonLoadEncoded_OnClick(object sender, RoutedEventArgs e)
-        {
-            string text = SaveLoadFile.LoadTextFile();
-
-            if (text != null)
-                viewModel.EncodedText = text;
         }
 
         private void TextBoxDecoded_OnPreviewDragEnter(object sender, DragEventArgs e)

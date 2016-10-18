@@ -17,10 +17,11 @@
 using System;
 using System.Reflection;
 using DustInTheWind.B64.Business;
+using DustInTheWind.B64.Presentation.Commands;
 
 namespace DustInTheWind.B64.Presentation
 {
-    public class MainViewModel : ViewModelBase
+    internal class MainViewModel : ViewModelBase
     {
         private string decodedText;
         private string encodedText;
@@ -29,6 +30,11 @@ namespace DustInTheWind.B64.Presentation
         private volatile bool updateFromBusiness;
 
         private readonly ApplicationState applicationState;
+
+        public LoadEncodedFileCommand LoadEncodedFileCommand { get; set; }
+        public SaveEncodedFileCommand SaveEncodedFileCommand { get; set; }
+        public LoadDecodedFileCommand LoadDecodedFileCommand { get; set; }
+        public SaveDecodedFileCommand SaveDecodedFileCommand { get; set; }
 
         public string Title
         {
@@ -79,6 +85,11 @@ namespace DustInTheWind.B64.Presentation
             applicationState = new ApplicationState();
             applicationState.EncodedTextChanged += HandleEncodedTextChanged;
             applicationState.DecodedTextChanged += HandleApplicationStateDecodedTextChanged;
+
+            LoadEncodedFileCommand = new LoadEncodedFileCommand(applicationState);
+            SaveEncodedFileCommand = new SaveEncodedFileCommand(applicationState);
+            LoadDecodedFileCommand = new LoadDecodedFileCommand(applicationState);
+            SaveDecodedFileCommand = new SaveDecodedFileCommand(applicationState);
 
             Title = GetWindowTitle();
         }
