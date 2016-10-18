@@ -57,12 +57,18 @@ namespace DustInTheWind.B64.Presentation
 
         private void ButtonLoadDecoded_OnClick(object sender, RoutedEventArgs e)
         {
-            viewModel.DecodedText = SaveLoadFile.LoadTextFile();
+            string text = SaveLoadFile.LoadTextFile();
+
+            if (text != null)
+                viewModel.DecodedText = text;
         }
 
         private void ButtonLoadEncoded_OnClick(object sender, RoutedEventArgs e)
         {
-            viewModel.EncodedText = SaveLoadFile.LoadTextFile();
+            string text = SaveLoadFile.LoadTextFile();
+
+            if (text != null)
+                viewModel.EncodedText = text;
         }
 
         private void TextBoxDecoded_OnPreviewDragEnter(object sender, DragEventArgs e)

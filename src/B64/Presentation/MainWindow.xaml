@@ -5,7 +5,8 @@
         Height="350" Width="525"
         WindowStartupLocation="CenterScreen"
         Topmost="True"
-        Icon="../icon.ico">
+        Icon="../icon.ico"
+        ResizeMode="CanResizeWithGrip">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,56 +16,117 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch">
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalAlignment="Stretch">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Name="LabelDecoded">Decoded text:</Label>
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Name="LabelDecoded"
+                Content="Decoded text:"/>
 
-            <Button Grid.Row="0" Grid.Column="1" Margin="2" Name="ButtonLoadDecoded" Click="ButtonLoadDecoded_OnClick">
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="2"
+                Name="ButtonLoadDecoded"
+                Click="ButtonLoadDecoded_OnClick"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+
                 <Image Source="../Icons/load.png" Height="16" />
+
             </Button>
 
-            <Button Grid.Row="0" Grid.Column="2" Margin="2" Name="ButtonSaveDecoded" Click="ButtonSaveDecoded_OnClick">
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="2"
+                Name="ButtonSaveDecoded"
+                Click="ButtonSaveDecoded_OnClick"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+
                 <Image Source="../Icons/gnome_media_floppy.png" Height="16" />
+
             </Button>
         </Grid>
 
-        <TextBox Grid.Row="1" Grid.Column="0" Name="TextBoxDecoded" TextChanged="TextBoxDecoded_OnTextChanged"
-                 TextWrapping="Wrap" Background="#B9D3E8" BorderThickness="10"
-                 AllowDrop="True"
-                 PreviewDragEnter="TextBoxDecoded_OnPreviewDragEnter"
-                 PreviewDragOver="TextBoxDecoded_OnPreviewDragOver"
-                 Drop="TextBoxDecoded_OnDrop" Text="{Binding DecodedText}">
-        </TextBox>
+        <TextBox 
+            Grid.Row="1"
+            Grid.Column="0"
+            Name="TextBoxDecoded"
+            TextChanged="TextBoxDecoded_OnTextChanged"
+            TextWrapping="Wrap"
+            Background="#B9D3E8"
+            BorderThickness="0"
+            AllowDrop="True"
+            Padding="8"
+            PreviewDragEnter="TextBoxDecoded_OnPreviewDragEnter"
+            PreviewDragOver="TextBoxDecoded_OnPreviewDragOver"
+            Drop="TextBoxDecoded_OnDrop" Text="{Binding DecodedText}"/>
 
-        <Grid Name="GridEncodedToolBar"  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch">
+        <Grid
+            Name="GridEncodedToolBar"
+            Grid.Row="2"
+            Grid.Column="0"
+            HorizontalAlignment="Stretch">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Name="LabelEncoded">Encoded text:</Label>
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Name="LabelEncoded"
+                Content="Encoded text:"/>
 
-            <Button Grid.Row="0" Grid.Column="1" Margin="2" Name="ButtonLoadEncoded" Click="ButtonLoadEncoded_OnClick">
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="2"
+                Name="ButtonLoadEncoded"
+                Click="ButtonLoadEncoded_OnClick"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+
                 <Image Source="../Icons/load.png" Height="16" />
+
             </Button>
 
-            <Button Grid.Row="0" Grid.Column="2" Margin="2" Name="ButtonSaveEncoded" Click="ButtonSaveEncoded_OnClick">
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="2"
+                Name="ButtonSaveEncoded"
+                Click="ButtonSaveEncoded_OnClick"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+
                 <Image Source="../Icons/gnome_media_floppy.png" Height="16" />
+
             </Button>
         </Grid>
 
-        <TextBox Grid.Row="3" Grid.Column="0" Name="TextBoxEncoded" TextChanged="TextBoxEncoded_OnTextChanged" TextWrapping="Wrap" Background="#B9D3E8"
-                  BorderThickness="10"
-                 PreviewDragEnter="TextBoxEncoded_OnPreviewDragEnter"
-                 PreviewDragOver="TextBoxEncoded_OnPreviewDragOver"
-                 Drop="TextBoxEncoded_OnDrop"
-                 Text="{Binding EncodedText}">
-        </TextBox>
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="0"
+            Name="TextBoxEncoded"
+            TextChanged="TextBoxEncoded_OnTextChanged"
+            TextWrapping="Wrap"
+            Background="#B9D3E8"
+            BorderThickness="0"
+            Padding="8"
+            PreviewDragEnter="TextBoxEncoded_OnPreviewDragEnter"
+            PreviewDragOver="TextBoxEncoded_OnPreviewDragOver"
+            Drop="TextBoxEncoded_OnDrop"
+            Text="{Binding EncodedText}"/>
     </Grid>
 </Window>
