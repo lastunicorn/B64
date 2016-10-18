@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Business\ApplicationState.cs" />
+    <Compile Include="Presentation\AutoGreyableImage.cs" />
     <Compile Include="Presentation\TextLoaders\TextFromDataLoader.cs" />
     <Page Include="Presentation\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
