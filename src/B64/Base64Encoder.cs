@@ -14,7 +14,7 @@ namespace DustInTheWind.B64
         public string Decode(string base64EncodedData)
         {
             byte[] base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
-            return Encoding.UTF7.GetString(base64EncodedBytes);
+            return Encoding.UTF8.GetString(base64EncodedBytes);
         }
     }
 }
