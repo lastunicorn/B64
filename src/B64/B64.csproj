@@ -57,7 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Business\ApplicationState.cs" />
-    <Compile Include="Business\SaveLoadFile.cs" />
+    <Compile Include="Presentation\TextLoaders\TextFromDataLoader.cs" />
     <Page Include="Presentation\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +67,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\Base64Encoder.cs" />
+    <Compile Include="Presentation\TextLoaders\TextFromFileLoader.cs" />
+    <Compile Include="Presentation\TextLoaders\TextFromFileSaver.cs" />
     <Compile Include="Presentation\Commands\LoadDecodedFileCommand.cs" />
     <Compile Include="Presentation\Commands\SaveDecodedFileCommand.cs" />
     <Compile Include="Presentation\Commands\LoadEncodedFileCommand.cs" />

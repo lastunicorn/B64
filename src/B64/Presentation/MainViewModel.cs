@@ -82,7 +82,9 @@ namespace DustInTheWind.B64.Presentation
 
         public MainViewModel()
         {
-            applicationState = new ApplicationState();
+            Base64Encoder base64Encoder = new Base64Encoder();
+
+            applicationState = new ApplicationState(base64Encoder);
             applicationState.EncodedTextChanged += HandleEncodedTextChanged;
             applicationState.DecodedTextChanged += HandleApplicationStateDecodedTextChanged;
 

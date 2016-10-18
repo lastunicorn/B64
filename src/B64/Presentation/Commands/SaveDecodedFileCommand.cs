@@ -17,6 +17,7 @@
 using System;
 using System.Windows.Input;
 using DustInTheWind.B64.Business;
+using DustInTheWind.B64.Presentation.TextLoaders;
 
 namespace DustInTheWind.B64.Presentation.Commands
 {
@@ -46,7 +47,8 @@ namespace DustInTheWind.B64.Presentation.Commands
 
         public void Execute(object parameter)
         {
-            SaveLoadFile.SaveTextFile("Decoded", applicationState.DecodedText);
+            TextFromFileSaver saver = new TextFromFileSaver("Decoded", applicationState.DecodedText);
+            saver.Save();
         }
 
         protected virtual void OnCanExecuteChanged()

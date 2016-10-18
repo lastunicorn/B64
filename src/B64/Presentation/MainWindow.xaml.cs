@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Windows;
-using DustInTheWind.B64.Business;
+using DustInTheWind.B64.Presentation.TextLoaders;
 
 namespace DustInTheWind.B64.Presentation
 {
@@ -48,7 +48,8 @@ namespace DustInTheWind.B64.Presentation
 
         private void TextBoxDecoded_OnDrop(object sender, DragEventArgs e)
         {
-            string text = SaveLoadFile.GetTextFromFirstFile(e.Data);
+            TextFromDataLoader loader = new TextFromDataLoader(e.Data);
+            string text = loader.GetText();
 
             if (text != null)
                 viewModel.DecodedText = text;
@@ -70,7 +71,8 @@ namespace DustInTheWind.B64.Presentation
 
         private void TextBoxEncoded_OnDrop(object sender, DragEventArgs e)
         {
-            string text = SaveLoadFile.GetTextFromFirstFile(e.Data);
+            TextFromDataLoader loader = new TextFromDataLoader(e.Data);
+            string text = loader.GetText();
 
             if (text != null)
                 viewModel.EncodedText = text;

@@ -20,7 +20,7 @@ namespace DustInTheWind.B64.Business
 {
     internal class ApplicationState
     {
-        private readonly Base64Encoder base64Encoder;
+        private readonly Base64Encoder encoder;
         private volatile bool updateMode;
         private string decodedText;
         private string encodedText;
@@ -56,9 +56,10 @@ namespace DustInTheWind.B64.Business
             }
         }
 
-        public ApplicationState()
+        public ApplicationState(Base64Encoder encoder)
         {
-            base64Encoder = new Base64Encoder();
+            if (encoder == null) throw new ArgumentNullException("encoder");
+            this.encoder = encoder;
         }
 
         private void UpdateEncodedText()
@@ -67,7 +68,7 @@ namespace DustInTheWind.B64.Business
 
             try
             {
-                EncodedText = base64Encoder.Encode(decodedText);
+                EncodedText = encoder.Encode(decodedText);
             }
             finally
             {
@@ -80,7 +81,7 @@ namespace DustInTheWind.B64.Business
             updateMode = true;
             try
             {
-                DecodedText = base64Encoder.Decode(encodedText);
+                DecodedText = encoder.Decode(encodedText);
             }
             finally
             {

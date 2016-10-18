@@ -1,4 +1,4 @@
-﻿// B64
+// B64
 // Copyright (C) 2016 Dust in the Wind
 // 
 // This program is free software: you can redistribute it and/or modify
@@ -14,14 +14,31 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System.Windows;
+using System.IO;
+using Microsoft.Win32;
 
-namespace DustInTheWind.B64
+namespace DustInTheWind.B64.Presentation.TextLoaders
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    internal class TextFromFileLoader
     {
+        public string Load()
+        {
+            string filename = AskToLoadTextFile();
+
+            return filename == null ? null : File.ReadAllText(filename);
+        }
+
+        private static string AskToLoadTextFile()
+        {
+            OpenFileDialog dlg = new OpenFileDialog
+            {
+                DefaultExt = ".txt",
+                Filter = "Text documents|*.txt|All files|*.*"
+            };
+
+            bool? result = dlg.ShowDialog();
+
+            return result != true ? null : dlg.FileName;
+        }
     }
 }
