@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:views="clr-namespace:DustInTheWind.B64.Presentation.Views"
+        xmlns:viewModels="clr-namespace:DustInTheWind.B64.Presentation.ViewModels"
         mc:Ignorable="d"
         Title="{Binding Title}"
         Height="350"
@@ -13,7 +14,7 @@
         Topmost="True"
         Icon="{StaticResource AppIcon}"
         ResizeMode="CanResizeWithGrip"
-        d:DataContext="{d:DesignInstance presentation:MainViewModel}">
+        d:DataContext="{d:DesignInstance viewModels:MainViewModel}">
 
     <Window.Resources>
         <Style TargetType="TextBox">

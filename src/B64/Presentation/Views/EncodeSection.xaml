@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:presentation="clr-namespace:DustInTheWind.B64.Presentation"
+             xmlns:viewModels="clr-namespace:DustInTheWind.B64.Presentation.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="300"
-             d:DesignWidth="300">
+             d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance viewModels:EncodeViewModel}">
 
     <DockPanel>
 
@@ -15,20 +17,20 @@
                 HorizontalAlignment="Stretch">
 
             <Button
-                    DockPanel.Dock="Right"
-                    Margin="2"
-                    Command="{Binding SaveEncodedFileCommand}"
-                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                DockPanel.Dock="Right"
+                Margin="2"
+                Command="{Binding SaveEncodedFileCommand}"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
 
                 <presentation:AutoGreyableImage Source="{StaticResource SaveIcon}" Stretch="Uniform" Width="16"/>
 
             </Button>
 
             <Button
-                    DockPanel.Dock="Right"
-                    Margin="2"
-                    Command="{Binding LoadEncodedFileCommand}"
-                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                DockPanel.Dock="Right"
+                Margin="2"
+                Command="{Binding LoadEncodedFileCommand}"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
 
                 <presentation:AutoGreyableImage Source="{StaticResource LoadIcon}" Stretch="Uniform" Width="16"/>
 
@@ -39,15 +41,15 @@
         </DockPanel>
 
         <TextBox
-                TextWrapping="Wrap"
-                BorderThickness="0"
-                Padding="5"
-                HorizontalScrollBarVisibility="Auto"
-                VerticalScrollBarVisibility="Auto"
-                PreviewDragEnter="TextBoxEncoded_OnPreviewDragEnter"
-                PreviewDragOver="TextBoxEncoded_OnPreviewDragOver"
-                Drop="TextBoxEncoded_OnDrop"
-                Text="{Binding EncodedText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            TextWrapping="Wrap"
+            BorderThickness="0"
+            Padding="5"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto"
+            PreviewDragEnter="TextBoxEncoded_OnPreviewDragEnter"
+            PreviewDragOver="TextBoxEncoded_OnPreviewDragOver"
+            Drop="TextBoxEncoded_OnDrop"
+            Text="{Binding EncodedText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
     </DockPanel>
     

@@ -68,10 +68,10 @@ namespace DustInTheWind.B64.Business
         private void UpdateEncodedText()
         {
             isInternalUpdate = true;
-            EncodingError = null;
 
             try
             {
+                EncodingError = null;
                 EncodedText = encoder.Encode(decodedText);
             }
             catch (Exception ex)
@@ -88,10 +88,10 @@ namespace DustInTheWind.B64.Business
         private void UpdateDecodedText()
         {
             isInternalUpdate = true;
-            DecodingError = null;
 
             try
             {
+                DecodingError = null;
                 DecodedText = encoder.Decode(encodedText);
             }
             catch (Exception ex)
