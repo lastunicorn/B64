@@ -58,7 +58,7 @@ namespace DustInTheWind.B64.Presentation
                 }
                 else
                 {
-                    SetDecodedTextInBusiness(value);
+                    applicationState.DecodedText = value;
                 }
             }
         }
@@ -75,7 +75,7 @@ namespace DustInTheWind.B64.Presentation
                 }
                 else
                 {
-                    SetEncodedTextInBusiness(value);
+                    applicationState.EncodedText = value;
                 }
             }
         }
@@ -100,7 +100,9 @@ namespace DustInTheWind.B64.Presentation
         {
             UpdateFromBusiness(() =>
             {
-                DecodedText = applicationState.DecodedText;
+                DecodedText = applicationState.DecodingError != null
+                    ? "error: " + applicationState.DecodingError.Message
+                    : applicationState.DecodedText;
             });
         }
 
@@ -108,7 +110,9 @@ namespace DustInTheWind.B64.Presentation
         {
             UpdateFromBusiness(() =>
             {
-                EncodedText = applicationState.EncodedText;
+                EncodedText = applicationState.EncodingError != null
+                    ? "error: " + applicationState.EncodingError.Message
+                    : applicationState.EncodedText;
             });
         }
 
@@ -117,23 +121,6 @@ namespace DustInTheWind.B64.Presentation
             Assembly assembly = Assembly.GetEntryAssembly();
             Version version = assembly.GetName().Version;
             return string.Format("Base64 Encoder {0}", version.ToString(2));
-        }
-
-        private void SetDecodedTextInBusiness(string text)
-        {
-            applicationState.DecodedText = text;
-        }
-
-        private void SetEncodedTextInBusiness(string text)
-        {
-            try
-            {
-                applicationState.EncodedText = text;
-            }
-            catch (Exception ex)
-            {
-                UpdateFromBusiness(() => { DecodedText = "error: " + ex.Message; });
-            }
         }
 
         private void UpdateFromBusiness(Action action)

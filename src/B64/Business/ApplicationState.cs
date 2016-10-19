@@ -21,7 +21,7 @@ namespace DustInTheWind.B64.Business
     internal class ApplicationState
     {
         private readonly Base64Encoder encoder;
-        private volatile bool updateMode;
+        private volatile bool isInternalUpdate;
         private string decodedText;
         private string encodedText;
 
@@ -37,7 +37,7 @@ namespace DustInTheWind.B64.Business
 
                 OnDecodedTextChanged();
 
-                if (!updateMode)
+                if (!isInternalUpdate)
                     UpdateEncodedText();
             }
         }
@@ -51,10 +51,13 @@ namespace DustInTheWind.B64.Business
 
                 OnEncodedTextChanged();
 
-                if (!updateMode)
+                if (!isInternalUpdate)
                     UpdateDecodedText();
             }
         }
+
+        public Exception EncodingError { get; private set; }
+        public Exception DecodingError { get; private set; }
 
         public ApplicationState(Base64Encoder encoder)
         {
@@ -64,28 +67,41 @@ namespace DustInTheWind.B64.Business
 
         private void UpdateEncodedText()
         {
-            updateMode = true;
+            isInternalUpdate = true;
+            EncodingError = null;
 
             try
             {
                 EncodedText = encoder.Encode(decodedText);
             }
+            catch (Exception ex)
+            {
+                EncodingError = ex;
+                EncodedText = null;
+            }
             finally
             {
-                updateMode = false;
+                isInternalUpdate = false;
             }
         }
 
         private void UpdateDecodedText()
         {
-            updateMode = true;
+            isInternalUpdate = true;
+            DecodingError = null;
+
             try
             {
                 DecodedText = encoder.Decode(encodedText);
             }
+            catch (Exception ex)
+            {
+                DecodingError = ex;
+                DecodedText = null;
+            }
             finally
             {
-                updateMode = false;
+                isInternalUpdate = false;
             }
         }
 
