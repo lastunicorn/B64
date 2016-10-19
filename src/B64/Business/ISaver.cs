@@ -14,32 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System.IO;
-using DustInTheWind.B64.Business;
-using Microsoft.Win32;
-
-namespace DustInTheWind.B64.Presentation.TextLoaders
+namespace DustInTheWind.B64.Business
 {
-    internal class TextFromFileLoader : ILoader
+    internal interface ISaver
     {
-        public string Load()
-        {
-            string filename = AskToLoadTextFile();
-
-            return filename == null ? null : File.ReadAllText(filename);
-        }
-
-        private static string AskToLoadTextFile()
-        {
-            OpenFileDialog dlg = new OpenFileDialog
-            {
-                DefaultExt = ".txt",
-                Filter = "Text documents|*.txt|All files|*.*"
-            };
-
-            bool? result = dlg.ShowDialog();
-
-            return result != true ? null : dlg.FileName;
-        }
+        void Save(string text);
     }
 }

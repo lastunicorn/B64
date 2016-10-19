@@ -15,8 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Windows;
 using DustInTheWind.B64.Business;
 using DustInTheWind.B64.Presentation.Commands;
+using DustInTheWind.B64.Presentation.TextLoaders;
 
 namespace DustInTheWind.B64.Presentation.ViewModels
 {
@@ -69,6 +71,12 @@ namespace DustInTheWind.B64.Presentation.ViewModels
             {
                 updateFromBusiness = false;
             }
+        }
+
+        public void LoadDecodedText(IDataObject data)
+        {
+            TextFromDataLoader loader = new TextFromDataLoader(data);
+            applicationState.LoadDecodedText(loader);
         }
     }
 }

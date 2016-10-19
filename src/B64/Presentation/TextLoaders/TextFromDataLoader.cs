@@ -17,10 +17,11 @@
 using System;
 using System.IO;
 using System.Windows;
+using DustInTheWind.B64.Business;
 
 namespace DustInTheWind.B64.Presentation.TextLoaders
 {
-    public class TextFromDataLoader
+    public class TextFromDataLoader : ILoader
     {
         private readonly IDataObject data;
 
@@ -30,7 +31,7 @@ namespace DustInTheWind.B64.Presentation.TextLoaders
             this.data = data;
         }
 
-        public string GetText()
+        public string Load()
         {
             string fileName = ExtractFirstFileName();
             return fileName == null ? null : File.ReadAllText(fileName);

@@ -105,6 +105,40 @@ namespace DustInTheWind.B64.Business
             }
         }
 
+        public void SaveEncodedText(ISaver saver)
+        {
+            if (saver == null) throw new ArgumentNullException("saver");
+
+            saver.Save(encodedText);
+        }
+
+        public void LoadEncodedText(ILoader loader)
+        {
+            if (loader == null) throw new ArgumentNullException("loader");
+
+            string text = loader.Load();
+
+            if (text != null)
+                EncodedText = text;
+        }
+
+        public void SaveDecodedText(ISaver saver)
+        {
+            if (saver == null) throw new ArgumentNullException("saver");
+
+            saver.Save(decodedText);
+        }
+
+        public void LoadDecodedText(ILoader loader)
+        {
+            if (loader == null) throw new ArgumentNullException("loader");
+
+            string text = loader.Load();
+
+            if (text != null)
+                DecodedText = text;
+        }
+
         protected virtual void OnDecodedTextChanged()
         {
             EventHandler handler = DecodedTextChanged;

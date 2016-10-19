@@ -16,7 +16,6 @@
 
 using System.Windows;
 using System.Windows.Controls;
-using DustInTheWind.B64.Presentation.TextLoaders;
 using DustInTheWind.B64.Presentation.ViewModels;
 
 namespace DustInTheWind.B64.Presentation.Views
@@ -45,16 +44,10 @@ namespace DustInTheWind.B64.Presentation.Views
 
         private void TextBoxEncoded_OnDrop(object sender, DragEventArgs e)
         {
-            TextFromDataLoader loader = new TextFromDataLoader(e.Data);
-            string text = loader.GetText();
+            EncodeViewModel viewModel = DataContext as EncodeViewModel;
 
-            if (text != null)
-            {
-                EncodeViewModel viewModel = DataContext as EncodeViewModel;
-
-                if (viewModel != null)
-                    viewModel.EncodedText = text;
-            }
+            if (viewModel != null)
+                viewModel.LoadEncodedText(e.Data);
 
             e.Handled = true;
         }

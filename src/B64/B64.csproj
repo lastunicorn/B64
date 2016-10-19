@@ -57,6 +57,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Business\ApplicationState.cs" />
+    <Compile Include="Business\ILoader.cs" />
+    <Compile Include="Business\ISaver.cs" />
     <Compile Include="Presentation\AutoGreyableImage.cs" />
     <Compile Include="Presentation\Views\DecodeSection.xaml.cs">
       <DependentUpon>DecodeSection.xaml</DependentUpon>

@@ -16,26 +16,26 @@
 
 using System;
 using System.IO;
+using DustInTheWind.B64.Business;
 using Microsoft.Win32;
 
 namespace DustInTheWind.B64.Presentation.TextLoaders
 {
-    internal class TextFromFileSaver
+    internal class TextFromFileSaver : ISaver
     {
         private readonly string defaultFileName;
-        private readonly string text;
 
-        public TextFromFileSaver(string defaultFileName, string text)
+        public TextFromFileSaver(string defaultFileName)
         {
             if (defaultFileName == null) throw new ArgumentNullException("defaultFileName");
-            if (text == null) throw new ArgumentNullException("text");
 
             this.defaultFileName = defaultFileName;
-            this.text = text;
         }
 
-        public void Save()
+        public void Save(string text)
         {
+            if (text == null) throw new ArgumentNullException("text");
+
             string filename = AskToSaveTextFile();
 
             if (filename == null)

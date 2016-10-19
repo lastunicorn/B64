@@ -47,8 +47,8 @@ namespace DustInTheWind.B64.Presentation.Commands
 
         public void Execute(object parameter)
         {
-            TextFromFileSaver saver = new TextFromFileSaver("Decoded", applicationState.DecodedText);
-            saver.Save();
+            TextFromFileSaver saver = new TextFromFileSaver("Decoded");
+            applicationState.SaveDecodedText(saver);
         }
 
         protected virtual void OnCanExecuteChanged()

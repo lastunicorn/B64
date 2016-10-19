@@ -42,10 +42,7 @@ namespace DustInTheWind.B64.Presentation.Commands
         public void Execute(object parameter)
         {
             TextFromFileLoader loader = new TextFromFileLoader();
-            string text = loader.Load();
-
-            if (text != null)
-                applicationState.DecodedText = text;
+            applicationState.LoadDecodedText(loader);
         }
     }
 }
