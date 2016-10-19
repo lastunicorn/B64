@@ -1,0 +1,40 @@
+﻿<Window x:Class="DustInTheWind.B64.Presentation.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:presentation="clr-namespace:DustInTheWind.B64.Presentation"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:views="clr-namespace:DustInTheWind.B64.Presentation.Views"
+        mc:Ignorable="d"
+        Title="{Binding Title}"
+        Height="350"
+        Width="525"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        Icon="{StaticResource AppIcon}"
+        ResizeMode="CanResizeWithGrip"
+        d:DataContext="{d:DesignInstance presentation:MainViewModel}">
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#B9D3E8"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <views:DecodeSection
+            Grid.Row="0"
+            Grid.Column="0"
+            DataContext="{Binding DecodeViewModel}"/>
+
+        <views:EncodeSection
+            Grid.Row="1"
+            Grid.Column="0"
+            DataContext="{Binding EncodeViewModel}"/>
+    </Grid>
+</Window>

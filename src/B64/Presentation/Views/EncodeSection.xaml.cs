@@ -15,46 +15,20 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Windows;
+using System.Windows.Controls;
 using DustInTheWind.B64.Presentation.TextLoaders;
+using DustInTheWind.B64.Presentation.ViewModels;
 
-namespace DustInTheWind.B64.Presentation
+namespace DustInTheWind.B64.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EncodeSection.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EncodeSection : UserControl
     {
-        private readonly MainViewModel viewModel;
-
-        public MainWindow()
+        public EncodeSection()
         {
             InitializeComponent();
-
-            viewModel = new MainViewModel();
-            DataContext = viewModel;
-        }
-
-        private void TextBoxDecoded_OnPreviewDragEnter(object sender, DragEventArgs e)
-        {
-            e.Effects = DragDropEffects.Copy;
-            e.Handled = true;
-        }
-
-        private void TextBoxDecoded_OnPreviewDragOver(object sender, DragEventArgs e)
-        {
-            e.Effects = DragDropEffects.Copy;
-            e.Handled = true;
-        }
-
-        private void TextBoxDecoded_OnDrop(object sender, DragEventArgs e)
-        {
-            TextFromDataLoader loader = new TextFromDataLoader(e.Data);
-            string text = loader.GetText();
-
-            if (text != null)
-                viewModel.DecodedText = text;
-
-            e.Handled = true;
         }
 
         private void TextBoxEncoded_OnPreviewDragEnter(object sender, DragEventArgs e)
@@ -75,7 +49,12 @@ namespace DustInTheWind.B64.Presentation
             string text = loader.GetText();
 
             if (text != null)
-                viewModel.EncodedText = text;
+            {
+                EncodeViewModel viewModel = DataContext as EncodeViewModel;
+
+                if (viewModel != null)
+                    viewModel.EncodedText = text;
+            }
 
             e.Handled = true;
         }
