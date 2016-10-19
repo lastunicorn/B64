@@ -6,6 +6,7 @@
     <Application.Resources>
         <BitmapImage x:Key="LoadIcon" UriSource="Icons/load.png"/>
         <BitmapImage x:Key="SaveIcon" UriSource="Icons/gnome_media_floppy.png"/>
+        <BitmapImage x:Key="ClipboardIcon" UriSource="Icons/clipboard.png"/>
         <BitmapImage x:Key="AppIcon" UriSource="icon.ico"/>
     </Application.Resources>
     

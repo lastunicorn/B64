@@ -31,6 +31,7 @@ namespace DustInTheWind.B64.Presentation.ViewModels
 
         public LoadDecodedFileCommand LoadDecodedFileCommand { get; set; }
         public SaveDecodedFileCommand SaveDecodedFileCommand { get; set; }
+        public DecodedTextToClipboardCommand DecodedTextToClipboardCommand { get; set; }
 
         public string DecodedText
         {
@@ -56,6 +57,7 @@ namespace DustInTheWind.B64.Presentation.ViewModels
 
             LoadDecodedFileCommand = new LoadDecodedFileCommand(applicationState);
             SaveDecodedFileCommand = new SaveDecodedFileCommand(applicationState);
+            DecodedTextToClipboardCommand = new DecodedTextToClipboardCommand(applicationState);
         }
 
         private void HandleApplicationStateDecodedTextChanged(object sender, EventArgs eventArgs)

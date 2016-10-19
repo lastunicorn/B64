@@ -31,6 +31,7 @@ namespace DustInTheWind.B64.Presentation.ViewModels
 
         public LoadEncodedFileCommand LoadEncodedFileCommand { get; set; }
         public SaveEncodedFileCommand SaveEncodedFileCommand { get; set; }
+        public EncodedTextToClipboardCommand EncodedTextToClipboardCommand { get; set; }
 
         public string EncodedText
         {
@@ -56,6 +57,7 @@ namespace DustInTheWind.B64.Presentation.ViewModels
 
             LoadEncodedFileCommand = new LoadEncodedFileCommand(applicationState);
             SaveEncodedFileCommand = new SaveEncodedFileCommand(applicationState);
+            EncodedTextToClipboardCommand = new EncodedTextToClipboardCommand(applicationState);
         }
 
         private void HandleEncodedTextChanged(object sender, EventArgs eventArgs)

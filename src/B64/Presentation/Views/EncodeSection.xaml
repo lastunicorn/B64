@@ -16,25 +16,45 @@
                 DockPanel.Dock="Top"
                 HorizontalAlignment="Stretch">
 
-            <Button
+            <ToolBar
                 DockPanel.Dock="Right"
-                Margin="2"
-                Command="{Binding SaveEncodedFileCommand}"
-                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                ToolBarTray.IsLocked="True"
+                Loaded="FrameworkElement_OnLoaded">
 
-                <presentation:AutoGreyableImage Source="{StaticResource SaveIcon}" Stretch="Uniform" Width="16"/>
+                <Button
+                    Margin="2"
+                    Command="{Binding LoadEncodedFileCommand}"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    ToolTip="Load from File">
 
-            </Button>
+                    <presentation:AutoGreyableImage Source="{StaticResource LoadIcon}" Stretch="Uniform" Width="16"/>
 
-            <Button
-                DockPanel.Dock="Right"
-                Margin="2"
-                Command="{Binding LoadEncodedFileCommand}"
-                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                </Button>
 
-                <presentation:AutoGreyableImage Source="{StaticResource LoadIcon}" Stretch="Uniform" Width="16"/>
+                <Button
+                    DockPanel.Dock="Right"
+                    Margin="2"
+                    Command="{Binding SaveEncodedFileCommand}"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    ToolTip="Save to File">
 
-            </Button>
+                    <presentation:AutoGreyableImage Source="{StaticResource SaveIcon}" Stretch="Uniform" Width="16"/>
+
+                </Button>
+
+                <Separator/>
+
+                <Button
+                    Margin="2"
+                    Command="{Binding EncodedTextToClipboardCommand}"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                    ToolTip="Copy to Clipboard">
+
+                    <presentation:AutoGreyableImage Source="{StaticResource ClipboardIcon}" Stretch="Uniform" Width="16"/>
+
+                </Button>
+                
+            </ToolBar>
 
             <Label FontSize="13" Content="Encoded text"/>
 
